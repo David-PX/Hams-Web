@@ -11,10 +11,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link text-orangeTheme" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link" routerLink=""
+          routerLinkActive="text-orangeTheme" aria-current="page" href="#">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-blueTheme" href="#">Habitaciones</a>
+          <a class="nav-link text-blueTheme">Habitaciones</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-blueTheme" href="#">Galeria</a>
@@ -28,7 +29,9 @@
       </ul>
       <ul class="navbar-nav d-flex justif-content-end text-right">
         <li class="nav-item ">
-          <a class="nav-link text-orangeTheme">
+          <a class="nav-link text-orangeTheme"
+          routerLink="/auth/login"
+          routerLinkActive="">
              <i class="fa-regular fa-user fa-2xl"></i>
              Mi cuenta</a>
         </li>

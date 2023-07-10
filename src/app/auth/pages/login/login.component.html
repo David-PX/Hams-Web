@@ -2,20 +2,35 @@
   <div class="col-md-6">
     <img src="./../../../../assets/login.svg" alt="" class="img-fluid">
   </div>
-  <div class="col-md-6 px-5">
+  <div class="col-md-6 mt-5 pt-5 px-5">
     <div class="text-center mt-5">
       <img src="../../../../assets/Hams_Hotal_Logo.png" alt="" class="img-fluid" width="100">
       <h4 class="text-shadow m-4">Iniciar Sesion en <span class="text-orangeTheme">Sand Chateau</span></h4>
     </div>
 
-    <form class="px-5 ">
+    <form [formGroup]="loginForm" (ngSubmit)="onSave()" class="px-5 ">
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
-        <input type="email" class="form-control form-control-sm box-shadow" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <label for="txtEmail" class="form-label">Correo Electronico</label>
+        <input type="email"
+        class="form-control form-control-sm box-shadow"
+        id="txtEmail"
+        formControlName="email">
+
+        <span *ngIf="isValidField('email')" class="form-text text-danger">
+          <!-- Debe de ser de 3 letras -->
+          {{getFieldError('email')}}
+      </span>
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-        <input type="password" class="form-control form-control-sm box-shadow" id="exampleInputPassword1">
+        <label for="txtPassword" class="form-label">Contraseña</label>
+        <input type="password"
+               class="form-control form-control-sm box-shadow"
+               id="txtPassword"
+               formControlName="password">
+               <span *ngIf="isValidField('password')" class="form-text text-danger">
+                <!-- Debe de ser de 3 letras -->
+                {{getFieldError('password')}}
+            </span>
       </div>
       <div class="row">
         <div class="col-md-6">
@@ -38,7 +53,7 @@
       <hr>
       <p>¿No tienes cuenta?</p>
       <div class="d-grid gap-2 mt-3">
-        <button type="submit" class="btn btn-block btn-primary btn-sm box-shadow">Registrate!</button>
+        <button type="button" class="btn btn-block btn-primary btn-sm box-shadow">Registrate!</button>
       </div>
     </div>
 
