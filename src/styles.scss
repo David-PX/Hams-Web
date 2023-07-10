@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --primary-color: #f8ede4;
+  --secondary-color: #f4a261;
+  --dark-blue: #264653;
+
+}
+
+.text-blueTheme{
+  color: #264653;
+}
+
+.text-orangeTheme{
+  color: #F4A261;
+}
+
+html, body {
+  color: #264653;
+  font-family: 'Inter', sans-serif;
+}
+
+.second-bg-color {
+  background-color: #F8EDE4;
+}
+
+
+.box-shadow{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
