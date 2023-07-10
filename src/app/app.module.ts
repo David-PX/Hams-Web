@@ -6,17 +6,18 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landingPage/pages/landing-page/landing-page.component';
 import { HeaderComponent } from './landingPage/components/header/header.component';
 import { FooterComponent } from './landingPage/components/footer/footer.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    HeaderComponent,
     FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   exports:[
     HeaderComponent

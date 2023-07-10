@@ -19,15 +19,33 @@
       </div>
 
       <ul class="list-group mt-4">
-        <li class="list-group-item border-0 "><i class="fa-solid fa-house"></i> Inicio</li>
-        <li class="list-group-item border-0 "><i class="fa-regular fa-user"></i> Perfil</li>
-        <li class="list-group-item border-0 "><i class="fa-solid fa-calendar-days"></i> Mis reservaciones</li>
+        <li class="list-group-item border-0 "
+            routerLink="/customer-site/main"
+            routerLinkActive="text-orangeTheme">
+          <i class="fa-solid fa-house"></i>
+           Inicio
+          </li>
+        <li class="list-group-item border-0 "
+        >
+          <i class="fa-regular fa-user"></i>
+          Perfil</li>
+        <li class="list-group-item border-0 "
+        routerLink="/customer-site/my-reservations"
+        routerLinkActive="text-orangeTheme">
+          <i class="fa-solid fa-calendar-days">
+
+          </i> Mis reservaciones</li>
         <hr class="mx-3">
         <li class="list-group-item border-0 "><i class="fa-sharp fa-solid fa-key"></i> Check In</li>
         <li class="list-group-item border-0 "><i class="fa-solid fa-door-open"></i> Check Out</li>
       </ul>
     </div>
     <div class="col-md-8">
+      <div class="container mt-5 ms-2">
+        <h3>Bienvenido David Solano</h3>
+        <p class="small-fonts ">Desde esta pagina podras gestionar tus reservaciones y tu informacion personal</p>
+      </div>
+
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -1,0 +1,79 @@
+<div class="container mx-2 mt-5">
+  <button class="btn btn-primary float-end"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"> Nueva reservacion</button>
+  <h6>Reservaciones:</h6>
+
+</div>
+
+
+
+
+
+<!-- modal agregar reservacion  -->
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Reservacion</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form>
+          <div class="row mb-3">
+            <div class="col-6">
+              <label class="form-label" for="txtArriveDate">Fecha Llegada</label>
+              <input type="date" class="form-control" name="" id="txtArriveDate">
+            </div>
+
+            <div class="col-6">
+              <label for="txtExitDate" class="form-label">Fecha Salida</label>
+              <input type="date" class="form-control" name="" id="txtExitDate">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-6">
+            <label for="">Adultos</label>
+            <select class="form-select" aria-label="Default select example">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            </div>
+
+            <div class="col-6">
+            <label for="">Niños</label>
+            <select class="form-select" aria-label="Default select example">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="">Seleccion el tipo de habitacion</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Seleccione una opcion</option>
+              <option value="1">Deluxe Standard</option>
+              <option value="2">Deluxe Suite</option>
+              <option value="3">Deluxe Lovely Suite</option>
+            </select>
+          </div>
+
+
+
+          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
