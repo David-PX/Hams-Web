@@ -6,6 +6,7 @@ import { CustomersSiteComponent } from './pages/customers-site/customers-site.co
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { MyReservationsComponent } from './pages/my-reservations/my-reservations.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +19,8 @@ import { MyReservationsComponent } from './pages/my-reservations/my-reservations
   imports: [
     CommonModule,
     ReservationsRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ReservationsModule { }
