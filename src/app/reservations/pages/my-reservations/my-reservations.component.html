@@ -4,6 +4,28 @@
           data-bs-target="#exampleModal"> Nueva reservacion</button>
   <h6>Reservaciones:</h6>
 
+  <div *ngFor="let card of ReservationList; let i = index" class="card mb-3 mt-5" style="max-width: 45rem;">
+    <div class="row g-0">
+
+      <div class="col-md-6">
+        <div class="card-body">
+          <p>Desde: {{card.arriveDate}} Hasta: {{card.exitDate}}</p>
+          <p class="small-fonts">Reservacion para {{card.adultsCount}} Adultos y {{card.childrenCounts}} Niños</p>
+          <p>Habitacion: {{card.roomType}}</p>
+          <p>CheckIn: 3:00 PM</p>
+          <p>CheckOut: 11:00 AM</p>
+          <hr>
+
+          <button (click)="doCheckOut(i)"  class="float-end btn btn-secondary">Check Out</button>
+          <button [id]="i" (click)="doCheckIn(i)" class="btn btn-secondary">Check In</button>
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img src="../../../../assets/standar-room.png" class="img-fluid h-100 w-100 rounded-end" alt="...">
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -12,68 +34,94 @@
 
 <!-- modal agregar reservacion  -->
 <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
+      <form [formGroup]="reservationForm" (ngSubmit)="saveReservation()" >
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Reservacion</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
-        <form>
+
           <div class="row mb-3">
             <div class="col-6">
               <label class="form-label" for="txtArriveDate">Fecha Llegada</label>
-              <input type="date" class="form-control" name="" id="txtArriveDate">
+              <input type="date" class="form-control" name="" id="txtArriveDate" formControlName="arriveDate">
+
+              <span *ngIf="isValidField('arriveDate')" class="form-text text-danger">
+                <!-- Debe de ser de 3 letras -->
+                {{getFieldError('arriveDate')}}
+            </span>
             </div>
 
             <div class="col-6">
               <label for="txtExitDate" class="form-label">Fecha Salida</label>
-              <input type="date" class="form-control" name="" id="txtExitDate">
+              <input type="date" class="form-control" name="" id="txtExitDate" formControlName="exitDate">
+
+              <span *ngIf="isValidField('exitDate')" class="form-text text-danger">
+                <!-- Debe de ser de 3 letras -->
+                {{getFieldError('exitDate')}}
+            </span>
             </div>
           </div>
 
           <div class="row mb-3">
             <div class="col-6">
             <label for="">Adultos</label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" formControlName="adultsCount">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
+
+            <span *ngIf="isValidField('adultsCount')" class="form-text text-danger">
+              <!-- Debe de ser de 3 letras -->
+              {{getFieldError('adultsCount')}}
+          </span>
             </div>
 
             <div class="col-6">
             <label for="">Niños</label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" formControlName="childrenCounts">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
+
+            <span *ngIf="isValidField('childrenCounts')" class="form-text text-danger">
+              <!-- Debe de ser de 3 letras -->
+              {{getFieldError('childrenCounts')}}
+          </span>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="">Seleccion el tipo de habitacion</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Seleccione una opcion</option>
+            <select class="form-select" aria-label="Default select example" formControlName="roomType">
               <option value="1">Deluxe Standard</option>
               <option value="2">Deluxe Suite</option>
               <option value="3">Deluxe Lovely Suite</option>
             </select>
+
+            <span *ngIf="isValidField('roomType')" class="form-text text-danger">
+              <!-- Debe de ser de 3 letras -->
+              {{getFieldError('roomType')}}
+          </span>
           </div>
 
 
 
           <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-        </form>
+
 
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Agregar</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

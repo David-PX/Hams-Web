@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface NavBarItems {
   route: string;
@@ -10,7 +10,10 @@ interface NavBarItems {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent  {
+  // ngOnInit(): void {
+
+  // }
   public menuItems: NavBarItems[] = [
     {route:'/', name:'Inicio'},
     {route:'', name:'Habitaciones'},

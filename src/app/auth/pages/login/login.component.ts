@@ -72,6 +72,7 @@ export class LoginComponent implements OnInit {
         title: 'Inicio de sesión Exitoso',
         text: 'Bienvenido David Solano'
       }).then(() => {
+        localStorage.setItem("user", "David");
         this.router.navigate(['/customer-site/main']);
       });
     }
