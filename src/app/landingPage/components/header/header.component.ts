@@ -11,14 +11,14 @@ interface NavBarItems {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent  {
-  // ngOnInit(): void {
+  //ngOnInit(): void {
 
-  // }
+  //}
   public menuItems: NavBarItems[] = [
     {route:'/', name:'Inicio'},
     {route:'', name:'Habitaciones'},
     {route:'', name:'Galeria'},
-    {route:'', name:'Nosotros'},
+    {route:'/nosotros', name:'Nosotros'},
     {route:'', name:'Contactanos'},
     {route:'/auth/login', name:'Mi cuenta'},
   ]
