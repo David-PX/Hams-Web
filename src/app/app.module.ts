@@ -7,12 +7,14 @@ import { LandingPageComponent } from './landingPage/pages/landing-page/landing-p
 import { HeaderComponent } from './landingPage/components/header/header.component';
 import { FooterComponent } from './landingPage/components/footer/footer.component';
 import { SharedModule } from './shared/shared.module';
+import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    FooterComponent
+    FooterComponent,
+    NosotrosComponent
   ],
   imports: [
     BrowserModule,

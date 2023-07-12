@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landingPage/pages/landing-page/landing-page.component';
+import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path:'home',
     component: LandingPageComponent
+  },
+  {
+    path:'nosotros',
+    component: NosotrosComponent
   },
   {
     path:'auth',
@@ -17,8 +22,8 @@ const routes: Routes = [
   },
   {
     path:'**',
-    redirectTo:''
-  },
+    redirectTo:'home'
+  }
 ];
 
 @NgModule({
