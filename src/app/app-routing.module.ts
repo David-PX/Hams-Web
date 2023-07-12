@@ -5,7 +5,7 @@ import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.compone
 
 const routes: Routes = [
   {
-    path:'',
+    path:'home',
     component: LandingPageComponent
   },
   {
@@ -22,8 +22,8 @@ const routes: Routes = [
   },
   {
     path:'**',
-    redirectTo:''
-  },
+    redirectTo:'home'
+  }
 ];
 
 @NgModule({

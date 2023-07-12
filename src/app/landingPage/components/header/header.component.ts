@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 interface NavBarItems {
   route: string;
@@ -15,11 +16,11 @@ export class HeaderComponent  {
 
   //}
   public menuItems: NavBarItems[] = [
-    {route:'/', name:'Inicio'},
+    {route:'/home', name:'Inicio'},
     {route:'', name:'Habitaciones'},
-    {route:'', name:'Galeria'},
+    {route:'/galeria', name:'Galeria'},
     {route:'/nosotros', name:'Nosotros'},
-    {route:'', name:'Contactanos'},
+    {route:'/contactanos', name:'Contactanos'},
     {route:'/auth/login', name:'Mi cuenta'},
   ]
 }
