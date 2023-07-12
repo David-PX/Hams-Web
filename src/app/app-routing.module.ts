@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landingPage/pages/landing-page/landing-page.component';
 import { ContactUsComponent } from './landingPage/pages/contact-us/contact-us.component';
+import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path:'contact-us',
     component: ContactUsComponent
+  },
+  {
+    path:'galery',
+    component: GaleryPageComponent
   },
   {
     path:'auth',

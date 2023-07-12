@@ -1,0 +1,19 @@
+.image-bg{
+  background-image: url('../../../../assets/contactUs.svg');
+}
+
+.zoom-in {
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.zoom-in:hover {
+  transform: scale(1.1);
+}
+
+.zoom-in img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

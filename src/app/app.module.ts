@@ -8,13 +8,15 @@ import { HeaderComponent } from './landingPage/components/header/header.componen
 import { FooterComponent } from './landingPage/components/footer/footer.component';
 import { SharedModule } from './shared/shared.module';
 import { ContactUsComponent } from './landingPage/pages/contact-us/contact-us.component';
+import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     FooterComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    GaleryPageComponent
   ],
   imports: [
     BrowserModule,
