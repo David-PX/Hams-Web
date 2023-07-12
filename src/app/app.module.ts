@@ -9,6 +9,8 @@ import { FooterComponent } from './landingPage/components/footer/footer.componen
 import { SharedModule } from './shared/shared.module';
 import { ContactUsComponent } from './landingPage/pages/contact-us/contact-us.component';
 import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page.component';
+import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page
     LandingPageComponent,
     FooterComponent,
     ContactUsComponent,
-    GaleryPageComponent
+    GaleryPageComponent,
+    NosotrosComponent
   ],
   imports: [
     BrowserModule,

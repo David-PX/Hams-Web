@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landingPage/pages/landing-page/landing-page.component';
 import { ContactUsComponent } from './landingPage/pages/contact-us/contact-us.component';
 import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page.component';
+import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.component';
+
 
 const routes: Routes = [
   {
-    path:'',
+    path:'home',
     component: LandingPageComponent
   },
   {
@@ -16,6 +18,9 @@ const routes: Routes = [
   {
     path:'galery',
     component: GaleryPageComponent
+  },
+    path:'nosotros',
+    component: NosotrosComponent
   },
   {
     path:'auth',
@@ -27,8 +32,8 @@ const routes: Routes = [
   },
   {
     path:'**',
-    redirectTo:''
-  },
+    redirectTo:'home'
+  }
 ];
 
 @NgModule({
