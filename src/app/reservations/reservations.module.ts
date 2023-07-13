@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MyReservationsComponent } from './pages/my-reservations/my-reservations.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -22,7 +23,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     CommonModule,
     ReservationsRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forChild()
   ]
 })
 export class ReservationsModule { }
