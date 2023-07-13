@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 interface NavBarItems {
   route: string;
@@ -12,15 +12,12 @@ interface NavBarItems {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent  {
-  //ngOnInit(): void {
-
-  //}
   public menuItems: NavBarItems[] = [
     {route:'/home', name:'Inicio'},
     {route:'', name:'Habitaciones'},
-    {route:'/galeria', name:'Galeria'},
+    {route:'/galery', name:'Galeria'},
     {route:'/nosotros', name:'Nosotros'},
-    {route:'/contactanos', name:'Contactanos'},
+    {route:'/contact-us', name:'Contactanos'},
     {route:'/auth/login', name:'Mi cuenta'},
   ]
 }

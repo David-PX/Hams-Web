@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CustomersSiteComponent } from './pages/customers-site/customers-site.component';
 import { MyReservationsComponent } from './pages/my-reservations/my-reservations.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path:'my-reservations',
         component:MyReservationsComponent
+      },
+      {
+        path:'profile',
+        component:ProfileComponent
       },
       {
         path:'**',

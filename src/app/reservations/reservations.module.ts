@@ -7,6 +7,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { MyReservationsComponent } from './pages/my-reservations/my-reservations.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -15,12 +17,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     CustomersSiteComponent,
     SidebarComponent,
     MyReservationsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     ReservationsRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forChild()
   ]
 })
 export class ReservationsModule { }

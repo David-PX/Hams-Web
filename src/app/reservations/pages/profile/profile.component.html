@@ -1,0 +1,58 @@
+<div class="m-3 pt-3">
+  <div>
+    <h3>Mis datos:</h3>
+  </div>
+  <form [formGroup]="editProfileForm" (ngSubmit)="onSave()" class="mt-4">
+    <div class="row pb-5">
+      <div class="col pe-5">
+        <label>Nombre</label>
+        <input class="form-control form-control-sm box-shadow" />
+      </div>
+      <div class="col ps-5">
+        <label>Apellido</label>
+        <input class="form-control form-control-sm box-shadow" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col pe-5">
+        <label>Número de teléfono</label>
+        <input
+          type="text"
+          mask="(000) 000-0000"
+          class="form-control form-control-sm box-shadow"
+        />
+      </div>
+      <div class="col ps-5">
+        <label>Correo Electrónico</label>
+        <input
+          type="email"
+          class="form-control form-control-sm box-shadow w-60"
+          id="txtEmail"
+          formControlName="email"
+        />
+        <span *ngIf="isValidField('email')" class="form-text text-danger">
+          <!-- Debe de ser de 3 letras -->
+          {{ getFieldError("email") }}
+        </span>
+      </div>
+    </div>
+    <div class="mt-3 d-flex py-25 flex-row-reverse">
+      <div>
+        <button
+          type="submit"
+          class="btn btn-block btn-primary btn-sm box-shadow rounded-pill mt-3 ms-3"
+        >
+          Guardar cambios
+        </button>
+      </div>
+      <div>
+        <button
+          type=""
+          class="btn btn-block btn-primary btn-sm box-shadow rounded-pill mt-3 ms-3"
+        >
+          Cambiar constraseña
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
