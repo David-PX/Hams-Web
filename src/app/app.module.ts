@@ -12,9 +12,6 @@ import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page
 import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.component';
 import { IConfig } from 'ngx-mask';
 
-export const options: Partial<IConfig> | (() => Partial<IConfig>) = {
-  showMaskTyped: true,
-}
 @NgModule({
   declarations: [
     AppComponent,
