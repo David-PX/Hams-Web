@@ -5,39 +5,42 @@ import { ContactUsComponent } from './landingPage/pages/contact-us/contact-us.co
 import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page.component';
 import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.component';
 
-
 const routes: Routes = [
   {
-    path:'home',
-    component: LandingPageComponent
+    path: 'home',
+    component: LandingPageComponent,
   },
   {
-    path:'contact-us',
-    component: ContactUsComponent
+    path: 'contact-us',
+    component: ContactUsComponent,
   },
   {
-    path:'galery',
-    component: GaleryPageComponent
-  },
-    path:'nosotros',
-    component: NosotrosComponent
+    path: 'galery',
+    component: GaleryPageComponent,
   },
   {
-    path:'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    path: 'nosotros',
+    component: NosotrosComponent,
   },
   {
-    path:'customer-site',
-    loadChildren: () => import('./reservations/reservations.module').then(m => m.ReservationsModule),
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path:'**',
-    redirectTo:'home'
-  }
+    path: 'customer-site',
+    loadChildren: () =>
+      import('./reservations/reservations.module').then(
+        (m) => m.ReservationsModule
+      ),
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

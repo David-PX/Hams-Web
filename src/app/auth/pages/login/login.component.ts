@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
+import { NgxMaskDirective } from 'ngx-mask/lib/ngx-mask.directive';
 
 declare var Swal: any;
 

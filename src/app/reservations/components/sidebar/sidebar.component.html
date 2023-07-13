@@ -3,9 +3,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-2 mt-5 border-end">
-
-      <div class="text-center ">
-        <nav class="" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <div class="text-center">
+        <nav
+          class=""
+          style="--bs-breadcrumb-divider: '>'"
+          aria-label="breadcrumb"
+        >
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Library</li>
@@ -13,41 +16,53 @@
         </nav>
       </div>
 
-
       <div class="text-center">
-        <img src="../../../../assets/Hams_Hotal_Logo.png"  alt="">
+        <img src="../../../../assets/Hams_Hotal_Logo.png" alt="" />
       </div>
 
       <ul class="list-group mt-4">
-        <li class="list-group-item border-0 "
-            routerLink="/customer-site/main"
-            routerLinkActive="text-orangeTheme">
+        <li
+          class="list-group-item border-0"
+          routerLink="/customer-site/main"
+          routerLinkActive="text-orangeTheme"
+        >
           <i class="fa-solid fa-house"></i>
-           Inicio
-          </li>
-        <li class="list-group-item border-0 "
+          Inicio
+        </li>
+        <li
+          class="list-group-item border-0"
+          routerLink="/customer-site/profile"
+          routerLinkActive="text-orangeTheme"
         >
           <i class="fa-regular fa-user"></i>
-          Perfil</li>
-        <li class="list-group-item border-0 "
-        routerLink="/customer-site/my-reservations"
-        routerLinkActive="text-orangeTheme">
-          <i class="fa-solid fa-calendar-days">
-
-          </i> Mis reservaciones</li>
-        <hr class="mx-3">
-        <li class="list-group-item border-0 "><i class="fa-sharp fa-solid fa-key"></i> Check In</li>
-        <li class="list-group-item border-0 "><i class="fa-solid fa-door-open"></i> Check Out</li>
+          Perfil
+        </li>
+        <li
+          class="list-group-item border-0"
+          routerLink="/customer-site/my-reservations"
+          routerLinkActive="text-orangeTheme"
+        >
+          <i class="fa-solid fa-calendar-days"> </i> Mis reservaciones
+        </li>
+        <hr class="mx-3" />
+        <li class="list-group-item border-0">
+          <i class="fa-sharp fa-solid fa-key"></i> Check In
+        </li>
+        <li class="list-group-item border-0">
+          <i class="fa-solid fa-door-open"></i> Check Out
+        </li>
       </ul>
     </div>
     <div class="col-md-8">
       <div class="container mt-5 ms-2">
         <h3>Bienvenido David Solano</h3>
-        <p class="small-fonts ">Desde esta pagina podras gestionar tus reservaciones y tu informacion personal</p>
+        <p class="small-fonts">
+          Desde esta pagina podras gestionar tus reservaciones y tu informacion
+          personal
+        </p>
       </div>
 
       <router-outlet></router-outlet>
     </div>
   </div>
-
 </div>

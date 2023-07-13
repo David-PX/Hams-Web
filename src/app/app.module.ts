@@ -10,8 +10,11 @@ import { SharedModule } from './shared/shared.module';
 import { ContactUsComponent } from './landingPage/pages/contact-us/contact-us.component';
 import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page.component';
 import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.component';
+import { IConfig } from 'ngx-mask';
 
-
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {
+  showMaskTyped: true,
+}
 @NgModule({
   declarations: [
     AppComponent,

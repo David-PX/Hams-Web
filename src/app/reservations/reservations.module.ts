@@ -7,6 +7,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SharedModule } from '../shared/shared.module';
 import { MyReservationsComponent } from './pages/my-reservations/my-reservations.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CustomersSiteComponent,
     SidebarComponent,
     MyReservationsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

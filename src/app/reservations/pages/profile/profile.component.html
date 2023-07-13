@@ -1,0 +1,40 @@
+<div class="m-3 pt-3">
+  <div>
+    <h3>Mis datos:</h3>
+  </div>
+  <form [formGroup]="editProfileForm" (ngSubmit)="onSave()" class="mt-4">
+    <div class="row pb-5">
+      <div class="col">
+        <label>Nombre</label>
+        <input class="form-control form-control-sm box-shadow" />
+      </div>
+      <div class="col">
+        <label>Apellido</label>
+        <input class="form-control form-control-sm box-shadow" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Número de teléfono</label>
+        <input
+          type="text"
+          mask="9999-99-99"
+          class="form-control form-control-sm box-shadow"
+        />
+      </div>
+      <div class="col">
+        <label>Correo Electrónico</label>
+        <input
+          type="email"
+          class="form-control form-control-sm box-shadow"
+          id="txtEmail"
+          formControlName="email"
+        />
+        <span *ngIf="isValidField('email')" class="form-text text-danger">
+          <!-- Debe de ser de 3 letras -->
+          {{ getFieldError("email") }}
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
