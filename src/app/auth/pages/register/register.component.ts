@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
+import { last } from 'rxjs';
 declare var Swal: any;
 
 @Component({
@@ -13,6 +15,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private _validatorsService: ValidatorsService,
+    private authService: AuthService,
     private http: HttpClient,
     private router: Router
   ) {}
@@ -21,32 +24,41 @@ export class RegisterComponent {
     throw new Error('Method not implemented.');
   }
 
-  public registerForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    name: ['',Validators.required],
-    lastName: ['',Validators.required],
-    phoneNumber:['',Validators.required],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    password2: ['', [Validators.required, Validators.minLength(6)]],
-    readPrivacy:['',[Validators.required]]
-  }, {
-    validators:[
-      this._validatorsService.isFieldOneEqualFieldTwo('password', 'password2'),
-    ],
-  });
+  public registerForm: FormGroup = this.fb.group(
+    {
+      email: ['', [Validators.required, Validators.email]],
+      name: ['', Validators.required],
+      lastName: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password2: ['', [Validators.required, Validators.minLength(6)]]
+    },
+    {
+      validators: [
+        this._validatorsService.isFieldOneEqualFieldTwo(
+          'password',
+          'password2'
+        ),
+      ],
+    }
+  );
 
   onSave(): void {
     if (this.registerForm.invalid) {
       this.registerForm.markAllAsTouched();
       return;
     }
+    console.log('hola');
 
     this.Register(
+      this.registerForm.get('name')?.value,
+      this.registerForm.get('lastName')?.value,
+      this.registerForm.get('phoneNumber')?.value,
       this.registerForm.get('email')?.value,
       this.registerForm.get('password')?.value
     );
 
-    this.registerForm.reset({ email: '', password: 0 });
+    this.registerForm.reset({ email: '', password: '' });
   }
 
   isValidField(field: string) {
@@ -73,19 +85,35 @@ export class RegisterComponent {
     return null;
   }
 
-  
-
-  Register(email: string, password: string): void {
-    this.http
-      .post<any>('http://localhost:3000/', this.registerForm.value)
+  Register(
+    name: string,
+    lastname: string,
+    phoneNumber: string,
+    email: string,
+    password: string
+  ): void {
+    this.authService
+      .register(name, lastname, phoneNumber, email, password)
       .subscribe(
-        (res) => {
-          alert('SIGNIN SUCCESFUL');
-          this.registerForm.reset();
-          this.router.navigate(['/login']);
+        (response: any) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Registro de cuenta exitoso',
+            text: `Bienvenido`,
+          }).then(() => {
+            // localStorage.setItem('user', 'David');
+            this.router.navigate(['/customer-site/login']);
+          });
+          console.log(response);
         },
-        (err) => {
-          alert('Something went wrong');
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'registro Fallido',
+            text: `Intente de nuevo`,
+          });
+          // Maneja los errores en caso de fallo en el inicio de sesión
+          console.error(error);
         }
       );
   }
