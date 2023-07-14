@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Inicio de sesión Exitoso',
-          text: `Bienvenido`,
+          text: `Bienvenido ${response.names}`,
         }).then(() => {
           localStorage.setItem('id', response.id);
           localStorage.setItem('userName', response.names);
