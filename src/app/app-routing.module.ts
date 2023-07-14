@@ -4,6 +4,7 @@ import { LandingPageComponent } from './landingPage/pages/landing-page/landing-p
 import { ContactUsComponent } from './landingPage/pages/contact-us/contact-us.component';
 import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page.component';
 import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.component';
+import { authGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -28,6 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'customer-site',
+    canActivate: [authGuard],
     loadChildren: () =>
       import('./reservations/reservations.module').then(
         (m) => m.ReservationsModule

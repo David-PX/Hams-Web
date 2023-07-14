@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     if(localStorage.getItem('token') != null){
       this.router.navigate(['/customer-site/main'])
     }
-    throw new Error('Method not implemented.');
   }
 
   public loginForm: FormGroup = this.fb.group({
@@ -72,12 +71,17 @@ export class LoginComponent implements OnInit {
   Login(email: string, password: string): void {
     this.authService.login(email, password).subscribe(
       (response: any) => {
+        console.log(response);
         Swal.fire({
           icon: 'success',
           title: 'Inicio de sesión Exitoso',
           text: `Bienvenido`,
         }).then(() => {
-          // localStorage.setItem('user', 'David');
+          localStorage.setItem('id', response.id);
+          localStorage.setItem('userName', response.names);
+          localStorage.setItem('userLastName', response.lastnames);
+          localStorage.setItem('email', email);
+          localStorage.setItem('phoneNumber', response.phoneNumber);
           localStorage.setItem('token', response.token);
           this.router.navigate(['/customer-site/main']);
         });

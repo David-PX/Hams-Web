@@ -11,7 +11,16 @@ interface NavBarItems {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent  {
+export class HeaderComponent implements OnInit  {
+
+  accountName : string = "Mi cuenta";
+
+  ngOnInit(): void {
+    (localStorage.getItem('userName') != null && localStorage.getItem('userName') != undefined)  ? this.accountName = localStorage.getItem('userName')! : "Mi cuenta";
+  }
+
+
+
   public menuItems: NavBarItems[] = [
     {route:'/home', name:'Inicio'},
     {route:'', name:'Habitaciones'},

@@ -96,21 +96,13 @@ export class RegisterComponent {
       .register(name, lastname, phoneNumber, email, password)
       .subscribe(
         (response: any) => {
-          Swal.fire({
-            icon: 'success',
-            title: 'Registro de cuenta exitoso',
-            text: `Bienvenido`,
-          }).then(() => {
-            // localStorage.setItem('user', 'David');
-            this.router.navigate(['/customer-site/login']);
-          });
-          console.log(response);
+            this.router.navigate(['/auth/register-next-step']);
         },
         (error) => {
           Swal.fire({
             icon: 'error',
-            title: 'registro Fallido',
-            text: `Intente de nuevo`,
+            title: 'Registro Fallido',
+            text: error.error.message,
           });
           // Maneja los errores en caso de fallo en el inicio de sesión
           console.error(error);

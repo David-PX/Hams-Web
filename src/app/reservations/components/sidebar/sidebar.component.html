@@ -4,20 +4,7 @@
   <div class="row">
     <div class="col-md-2 mt-5 border-end">
       <div class="text-center">
-        <nav
-          class=""
-          style="--bs-breadcrumb-divider: '>'"
-          aria-label="breadcrumb"
-        >
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
-          </ol>
-        </nav>
-      </div>
-
-      <div class="text-center">
-        <img src="../../../../assets/Hams_Hotal_Logo.png" alt="" />
+        <img src="../../../../assets/Hams_Hotal_Logo.png" alt="" height="80rem" width="80rem"/>
       </div>
 
       <ul class="list-group mt-4">
@@ -45,13 +32,15 @@
           <i class="fa-solid fa-calendar-days"> </i> Mis reservaciones
         </li>
         <hr class="mx-3" />
-        <button class="list-group-item border-0" (click)="logOut()">
-          <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión</button>
+
+        <li class="list-group-item border-0" (click)="logOut()">
+          <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión
+        </li>
       </ul>
     </div>
     <div class="col-md-8">
       <div class="container mt-5 ms-2">
-        <h3>Bienvenido David Solano</h3>
+        <h3>Bienvenido/a {{userName}}</h3>
         <p class="small-fonts">
           Desde esta pagina podras gestionar tus reservaciones y tu informacion
           personal
