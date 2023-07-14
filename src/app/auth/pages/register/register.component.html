@@ -87,11 +87,11 @@
           type="password"
           class="form-control form-control-sm box-shadow"
           id="txtPassword"
-          formControlName="password"
+          formControlName="password2"
         />
-        <span *ngIf="isValidField('password')" class="form-text text-danger">
+        <span *ngIf="isValidField('password2')" class="form-text text-danger">
           Debe de ser de 6 letras.
-          {{ getFieldError("password") }}
+          {{ getFieldError("password2") }}
         </span>
       </div>
       <div class="row">
@@ -100,7 +100,6 @@
             <input
               type="checkbox"
               class="form-check-input text-link"
-              id="exampleCheck1"
             />
             <label class="form-check-label" for="exampleCheck1"
               >He leído y acepto las políticas de privacidad</label

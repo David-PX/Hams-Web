@@ -23,8 +23,6 @@ export class LoginComponent implements OnInit {
     if(localStorage.getItem('token') != null){
       this.router.navigate(['/customer-site/main'])
     }
-    
-
     throw new Error('Method not implemented.');
   }
 

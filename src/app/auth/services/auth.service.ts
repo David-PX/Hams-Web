@@ -15,8 +15,21 @@ export class AuthService {
     return this.http.post(this.apiUrl, body);
   }
 
-  register(email: string, name: string, lastname: string, password: string, phoneNumber: string){
-    const body = {Email: email, Name: name, LastName: lastname, Password: password, PhoneNumber: phoneNumber};
+  register(
+    name: string,
+    lastname: string,
+    phoneNumber: string,
+    email: string,
+    password: string
+  ) {
+    const body = {
+      names: name,
+      lastNames: lastname,
+      phoneNumber: phoneNumber,
+      email: email,
+      password: password,
+    };
+    console.log(body);
     return this.http.post(this.registerUrl, body);
-  };
+  }
 }
