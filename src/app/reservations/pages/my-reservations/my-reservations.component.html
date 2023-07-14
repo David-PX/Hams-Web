@@ -9,15 +9,14 @@
 
       <div class="col-md-6">
         <div class="card-body">
-          <p>Desde: {{card.arriveDate}} Hasta: {{card.exitDate}}</p>
-          <p class="small-fonts">Reservacion para {{card.adultsCount}} Adultos y {{card.childrenCounts}} Niños</p>
+          <p>Desde: {{card.fechaEntrada}} Hasta: {{card.fechaSalida}}</p>
+          <p class="small-fonts">Reservacion para {{card.cantidad}} personas</p>
           <p>Habitacion: {{card.roomType}}</p>
           <p>CheckIn: 3:00 PM</p>
           <p>CheckOut: 11:00 AM</p>
           <hr>
 
-          <button (click)="doCheckOut(i)"  class="float-end btn btn-secondary">Check Out</button>
-          <button [id]="i" (click)="doCheckIn(i)" class="btn btn-secondary">Check In</button>
+          <!-- <button class="btn btn-secondary">Hacer Pago</button> -->
 
         </div>
       </div>
@@ -66,42 +65,30 @@
             </div>
           </div>
 
-          <div class="row mb-3">
-            <div class="col-6">
+
+            <div class="col-auto">
             <label for="">Adultos</label>
-            <select class="form-select" aria-label="Default select example" formControlName="adultsCount">
+            <select class="form-select" aria-label="Default select example" formControlName="personsCount">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
 
-            <span *ngIf="isValidField('adultsCount')" class="form-text text-danger">
+            <span *ngIf="isValidField('personsCount')" class="form-text text-danger">
               <!-- Debe de ser de 3 letras -->
-              {{getFieldError('adultsCount')}}
+              {{getFieldError('personsCount')}}
           </span>
             </div>
 
-            <div class="col-6">
-            <label for="">Niños</label>
-            <select class="form-select" aria-label="Default select example" formControlName="childrenCounts">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
 
-            <span *ngIf="isValidField('childrenCounts')" class="form-text text-danger">
-              <!-- Debe de ser de 3 letras -->
-              {{getFieldError('childrenCounts')}}
-          </span>
-            </div>
-          </div>
+
 
           <div class="mb-3">
             <label for="">Seleccion el tipo de habitacion</label>
             <select class="form-select" aria-label="Default select example" formControlName="roomType">
-              <option value="1">Deluxe Standard</option>
-              <option value="2">Deluxe Suite</option>
-              <option value="3">Deluxe Lovely Suite</option>
+              <option value="Habitación sencilla">Habitación sencilla</option>
+              <option value="Habitación doble">Habitación doble</option>
+              <option value="Habitación familiar">Habitación familiar</option>
             </select>
 
             <span *ngIf="isValidField('roomType')" class="form-text text-danger">
