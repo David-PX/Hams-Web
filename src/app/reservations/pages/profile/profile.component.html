@@ -6,11 +6,24 @@
     <div class="row pb-5">
       <div class="col pe-5">
         <label>Nombre</label>
-        <input class="form-control form-control-sm box-shadow" />
+        <input
+          class="form-control form-control-sm box-shadow"
+          formControlName="name"
+        />
+        <span *ngIf="isValidField('name')" class="form-text text-danger">
+          {{ getFieldError("name") }}
+        </span>
       </div>
       <div class="col ps-5">
         <label>Apellido</label>
-        <input class="form-control form-control-sm box-shadow" />
+
+        <input
+          class="form-control form-control-sm box-shadow"
+          formControlName="lastName"
+        />
+        <span *ngIf="isValidField('lastName')" class="form-text text-danger">
+          {{ getFieldError("lastName") }}
+        </span>
       </div>
     </div>
     <div class="row">
@@ -20,8 +33,13 @@
           type="text"
           mask="(000) 000-0000"
           class="form-control form-control-sm box-shadow"
+          formControlName="phoneNumber"
         />
+        <span *ngIf="isValidField('phoneNumber')" class="form-text text-danger">
+          {{ getFieldError("phoneNumber") }}
+        </span>
       </div>
+
       <div class="col ps-5">
         <label>Correo Electrónico</label>
         <input

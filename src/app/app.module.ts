@@ -11,6 +11,7 @@ import { ContactUsComponent } from './landingPage/pages/contact-us/contact-us.co
 import { GaleryPageComponent } from './landingPage/pages/galery-page/galery-page.component';
 import { NosotrosComponent } from './landingPage/pages/nosotros/nosotros.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { HttpClientModule } from '@angular/common/http';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -27,7 +28,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    HttpClientModule
   ],
   exports:[
     HeaderComponent
