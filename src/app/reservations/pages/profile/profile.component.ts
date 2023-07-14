@@ -20,6 +20,9 @@ export class ProfileComponent {
 
   public editProfileForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
+    name: ['',Validators.required],
+    lastName: ['',Validators.required],
+    phoneNumber:['',Validators.required]
   });
 
   onSave(): void {
@@ -60,10 +63,10 @@ export class ProfileComponent {
   Edit(email: string): void {
     Swal.fire({
       icon: 'success',
-      title: 'Cambios guardados',
-      text: '',
+      title: 'Éxito',
+      text: 'Cambios guardados con éxito',
     }).then(() => {
-      localStorage.setItem('user', 'David');
+      // localStorage.setItem('user', 'David');
       localStorage.setItem('email', this.editProfileForm.get('email')?.value);
       this.router.navigate(['/customer-site/main']);
     });

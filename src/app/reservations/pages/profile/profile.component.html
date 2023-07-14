@@ -6,11 +6,24 @@
     <div class="row pb-5">
       <div class="col pe-5">
         <label>Nombre</label>
-        <input class="form-control form-control-sm box-shadow" />
+        <input
+          class="form-control form-control-sm box-shadow"
+          formControlName="name"
+        />
+        <span *ngIf="isValidField('name')" class="form-text text-danger">
+          {{ getFieldError("name") }}
+        </span>
       </div>
       <div class="col ps-5">
         <label>Apellido</label>
-        <input class="form-control form-control-sm box-shadow" />
+
+        <input
+          class="form-control form-control-sm box-shadow"
+          formControlName="lastName"
+        />
+        <span *ngIf="isValidField('lastName')" class="form-text text-danger">
+          {{ getFieldError("lastName") }}
+        </span>
       </div>
     </div>
     <div class="row">
@@ -20,8 +33,13 @@
           type="text"
           mask="(000) 000-0000"
           class="form-control form-control-sm box-shadow"
+          formControlName="phoneNumber"
         />
+        <span *ngIf="isValidField('phoneNumber')" class="form-text text-danger">
+          {{ getFieldError("phoneNumber") }}
+        </span>
       </div>
+
       <div class="col ps-5">
         <label>Correo Electrónico</label>
         <input
@@ -49,9 +67,97 @@
         <button
           type=""
           class="btn btn-block btn-primary btn-sm box-shadow rounded-pill mt-3 ms-3"
+          data-bs-toggle="modal"
+          data-bs-target="#changePasswordModal"
         >
-          Cambiar constraseña
+          Cambiar contraseña
         </button>
+
+        <div
+          class="modal fade"
+          id="changePasswordModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  Cambiar contraseña
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-5 px-3">
+                  <label for="txtCurrPassword">Contraseña actual</label>
+                  <input
+                    type="password"
+                    class="form-control form-control-sm box-shadow w-60"
+                    id="txtCurrPassword"
+                    formControlName="password"
+                  />
+                  <span
+                    *ngIf="isValidField('password')"
+                    class="form-text text-danger"
+                  >
+                    <!-- Debe de ser de 3 letras -->
+                    {{ getFieldError("password") }}
+                  </span>
+                </div>
+                <div class="mb-5 px-3">
+                  <label for="txtNewPassword">Nueva constraseña</label>
+                  <input
+                    type="password"
+                    class="form-control form-control-sm box-shadow w-60"
+                    id="txtNewPassword"
+                    formControlName="password"
+                  />
+                  <span
+                    *ngIf="isValidField('password')"
+                    class="form-text text-danger"
+                  >
+                    <!-- Debe de ser de 3 letras -->
+                    {{ getFieldError("password") }}
+                  </span>
+                </div>
+                <div class="mb-5 px-3">
+                  <label for="txtRepeatNewPassword">Repetir nueva contraseña</label>
+                  <input
+                    type="password"
+                    class="form-control form-control-sm box-shadow w-60"
+                    id="txtRepeatNewPassword"
+                    formControlName="password"
+                  />
+                  <span
+                    *ngIf="isValidField('password')"
+                    class="form-text text-danger"
+                  >
+                    <!-- Debe de ser de 3 letras -->
+                    {{ getFieldError("password") }}
+                  </span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cerrar
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Guardar cambios
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </form>

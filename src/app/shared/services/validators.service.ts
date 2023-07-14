@@ -13,7 +13,7 @@ export class ValidatorsService {
   }
 
 
-  public isFieldOneEqualFielTwo(field1: string, field2: string){
+  public isFieldOneEqualFieldTwo(field1: string, field2: string){
     return (formGroup: FormControl) : ValidationErrors | null => {
       const fieldValue1 = formGroup.get(field1)?.value;
       const fieldValue2 = formGroup.get(field2)?.value;

@@ -25,8 +25,8 @@
         />
 
         <span *ngIf="isValidField('email')" class="form-text text-danger">
-           Debe de ser de 3 letras
-           {{ getFieldError("email") }}
+          Debe de ser de 3 letras
+          {{ getFieldError("email") }}
         </span>
       </div>
       <div class="mb-3">
@@ -35,17 +35,37 @@
           type="text"
           class="form-control form-control-sm box-shadow"
           id="txtNombres"
-          formControlName="nombres"
+          formControlName="name"
         />
+        <span *ngIf="isValidField('name')" class="form-text text-danger">
+          {{ getFieldError("name") }}
+        </span>
       </div>
+
       <div class="mb-3">
         <label for="txtApellidos" class="form-label">Apellidos</label>
         <input
           type="text"
           class="form-control form-control-sm box-shadow"
           id="txtApellidos"
-          formControlName="apellidos"
+          formControlName="lastName"
         />
+        <span *ngIf="isValidField('lastName')" class="form-text text-danger">
+          {{ getFieldError("lastName") }}
+        </span>
+      </div>
+      <div class="mb-3">
+        <label for="txtTelefono" class="form-label">Teléfono</label>
+        <input
+          type="phoneNumber"
+          class="form-control form-control-sm box-shadow"
+          id="txtPhoneNumber"
+          formControlName="phoneNumber"
+          mask="(000) 000 0000"
+        />
+        <span *ngIf="isValidField('phoneNumber')" class="form-text text-danger">
+          {{ getFieldError("phoneNumber") }}
+        </span> 
       </div>
       <div class="mb-3">
         <label for="txtPassword" class="form-label">Contraseña</label>
@@ -56,10 +76,11 @@
           formControlName="password"
         />
         <span *ngIf="isValidField('password')" class="form-text text-danger">
-           Debe de ser de 3 letras
+          Debe de ser de 6 letras.
           {{ getFieldError("password") }}
         </span>
       </div>
+
       <div class="mb-3">
         <label for="txtPassword" class="form-label">Repetir Contraseña</label>
         <input
@@ -69,7 +90,7 @@
           formControlName="password"
         />
         <span *ngIf="isValidField('password')" class="form-text text-danger">
-           Debe de ser de 3 letras
+          Debe de ser de 6 letras.
           {{ getFieldError("password") }}
         </span>
       </div>

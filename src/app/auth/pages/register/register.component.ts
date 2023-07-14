@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
+import { HttpClient } from '@angular/common/http';
 declare var Swal: any;
 
 @Component({
@@ -12,6 +13,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private _validatorsService: ValidatorsService,
+    private http: HttpClient,
     private router: Router
   ) {}
 
@@ -21,7 +23,16 @@ export class RegisterComponent {
 
   public registerForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    name: ['',Validators.required],
+    lastName: ['',Validators.required],
+    phoneNumber:['',Validators.required],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    password2: ['', [Validators.required, Validators.minLength(6)]],
+    readPrivacy:['',[Validators.required]]
+  }, {
+    validators:[
+      this._validatorsService.isFieldOneEqualFieldTwo('password', 'password2'),
+    ],
   });
 
   onSave(): void {
@@ -30,7 +41,7 @@ export class RegisterComponent {
       return;
     }
 
-    this.Login(
+    this.Register(
       this.registerForm.get('email')?.value,
       this.registerForm.get('password')?.value
     );
@@ -62,22 +73,20 @@ export class RegisterComponent {
     return null;
   }
 
-  Login(email: string, password: string): void {
-    if (email === 'admin@admin.com' && password === 'admin12345') {
-      Swal.fire({
-        icon: 'success',
-        title: 'Inicio de sesión Exitoso',
-        text: 'Bienvenido David Solano',
-      }).then(() => {
-        localStorage.setItem('user', 'David');
-        this.router.navigate(['/customer-site/main']);
-      });
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Email o contraseña incorrecto!',
-      });
-    }
+  
+
+  Register(email: string, password: string): void {
+    this.http
+      .post<any>('http://localhost:3000/', this.registerForm.value)
+      .subscribe(
+        (res) => {
+          alert('SIGNIN SUCCESFUL');
+          this.registerForm.reset();
+          this.router.navigate(['/login']);
+        },
+        (err) => {
+          alert('Something went wrong');
+        }
+      );
   }
 }
