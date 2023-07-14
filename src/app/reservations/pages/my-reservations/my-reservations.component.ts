@@ -1,32 +1,34 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
+import { Reservation } from '../../interfaces/Reservation';
+import { ReservationsService } from '../../services/reservations.service';
 
 declare var Swal: any;
-interface Reservation {
-  arriveDate: string;
-  exitDate: string;
-  adultsCount: string;
-  childrenCounts: string;
-  roomType: string;
-}
 @Component({
   templateUrl: './my-reservations.component.html',
   styleUrls: ['./my-reservations.component.scss']
 })
-export class MyReservationsComponent {
-
-
-
+export class MyReservationsComponent implements OnInit {
   @ViewChild('exampleModal') exampleModal: any;
 
-  constructor(public fb: FormBuilder, public _validatorsService: ValidatorsService) {}
+  constructor(public fb: FormBuilder, public _validatorsService: ValidatorsService, public _reservationsService: ReservationsService) {}
+
+  ngOnInit(): void {
+    this._reservationsService.GetReservations(localStorage.getItem("id")!).subscribe(
+      (response:any) => {
+        this.ReservationList = response;
+      },
+      (error) => {
+
+      }
+    )
+  }
 
   public reservationForm: FormGroup = this.fb.group({
     arriveDate: ['', [Validators.required,]],
     exitDate: ['', [Validators.required]],
-    adultsCount: ['', [Validators.required]],
-    childrenCounts: ['', [Validators.required]],
+    personsCount: ['', [Validators.required]],
     roomType: ['Seleccione una opcion', [Validators.required]],
   })
 
@@ -60,16 +62,29 @@ export class MyReservationsComponent {
 
   saveReservation(){
     var reservation: Reservation = {
-      arriveDate: this.reservationForm.get('arriveDate')!.value,
-      exitDate: this.reservationForm.get('exitDate')!.value,
-      adultsCount: this.reservationForm.get('adultsCount')!.value,
-      childrenCounts: this.reservationForm.get('childrenCounts')!.value,
+      fechaEntrada: this.reservationForm.get('arriveDate')!.value,
+      fechaSalida: this.reservationForm.get('exitDate')!.value,
+      cantidad: this.reservationForm.get("personsCount")!.value,
       roomType: this.reservationForm.get('roomType')!.value,
     }
 
 
-    this.ReservationList.push(reservation);
-
+    this._reservationsService.DoReservation(reservation).subscribe(
+    (response:any) => {
+      console.log("entrando");
+      Swal.fire({
+        icon: 'success',
+        text: `Su reservación se ha creado con exito`,
+      }).then(() => {
+        this.ReservationList.push(reservation);
+      });
+    },
+    (error) =>{
+      Swal.fire({
+        icon: 'error',
+        text: `Ha ocurrido un error`,
+      })
+    });
 
     this.reservationForm.reset();
   }
@@ -83,42 +98,7 @@ export class MyReservationsComponent {
   }
 
 
-  doCheckIn(element: any){
-    console.log(element);
-
-    Swal.fire({
-      icon: 'success',
-      title: 'El checkIn se ha generado correctamente. Su clave de acceso es:',
-      text: this.generateRandomKey(),
-      // footer: '<a href="">Why do I have this issue?</a>'
-    }).then(() => {
-     document.getElementById(element)!.innerText = "Check In Realizado";
-    });
-
-  }
-
-  doCheckOut (element: any) {
 
 
-    Swal.fire({
-      title: 'Esta seguro?',
-      text: "Se procedera a realizar el checkOut",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Check Out!'
-    }).then((result: { isConfirmed: any; }) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Check Out Exitoso!',
-          'Nos vemos en la siguiente',
-          'success'
-        ).then(() => {
-          this.ReservationList.splice(element, 1);
-        });
-      }
-    })
-  }
 
 }
