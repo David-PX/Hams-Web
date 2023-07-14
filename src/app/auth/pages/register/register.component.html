@@ -1,1 +1,101 @@
-<p>register works!</p>
+<div class="row">
+  <div class="col-md-6">
+    <img src="./../../../../assets/login.svg" alt="" class="img-fluid" />
+  </div>
+  <div class="col-md-6">
+    <div class="text-center mt-5">
+      <img
+        src="../../../../assets/Hams_Hotal_Logo.png"
+        alt=""
+        class="img-fluid"
+        width="100"
+      />
+      <h4 class="text-shadow m-4">
+        Registrar cuenta en <span class="text-orangeTheme">Sand Chateau</span>
+      </h4>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSave()" class="px-5">
+      <div class="mb-3">
+        <label for="txtEmail" class="form-label">Correo Electrónico</label>
+        <input
+          type="email"
+          class="form-control form-control-sm box-shadow"
+          id="txtEmail"
+          formControlName="email"
+        />
+
+        <span *ngIf="isValidField('email')" class="form-text text-danger">
+           Debe de ser de 3 letras
+           {{ getFieldError("email") }}
+        </span>
+      </div>
+      <div class="mb-3">
+        <label for="txtNombres" class="form-label">Nombres</label>
+        <input
+          type="text"
+          class="form-control form-control-sm box-shadow"
+          id="txtNombres"
+          formControlName="nombres"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="txtApellidos" class="form-label">Apellidos</label>
+        <input
+          type="text"
+          class="form-control form-control-sm box-shadow"
+          id="txtApellidos"
+          formControlName="apellidos"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="txtPassword" class="form-label">Contraseña</label>
+        <input
+          type="password"
+          class="form-control form-control-sm box-shadow"
+          id="txtPassword"
+          formControlName="password"
+        />
+        <span *ngIf="isValidField('password')" class="form-text text-danger">
+           Debe de ser de 3 letras
+          {{ getFieldError("password") }}
+        </span>
+      </div>
+      <div class="mb-3">
+        <label for="txtPassword" class="form-label">Repetir Contraseña</label>
+        <input
+          type="password"
+          class="form-control form-control-sm box-shadow"
+          id="txtPassword"
+          formControlName="password"
+        />
+        <span *ngIf="isValidField('password')" class="form-text text-danger">
+           Debe de ser de 3 letras
+          {{ getFieldError("password") }}
+        </span>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input text-link"
+              id="exampleCheck1"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >He leído y acepto las políticas de privacidad</label
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="d-grid gap-2 mt-3">
+        <button
+          type="submit"
+          class="btn btn-block btn-primary btn-sm box-shadow"
+        >
+          Registrar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
