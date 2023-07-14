@@ -9,6 +9,7 @@ import { MyReservationsComponent } from './pages/my-reservations/my-reservations
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 
 
@@ -17,7 +18,8 @@ import { NgxMaskModule } from 'ngx-mask';
     CustomersSiteComponent,
     SidebarComponent,
     MyReservationsComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
