@@ -7,11 +7,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+
+  userName: string = "";
+
+  ngOnInit(): void {
+    this.userName = localStorage.getItem("userName")! + " " + localStorage.getItem("userLastName")!;
+  }
+
   constructor(
     private router: Router
   ){}
   logOut(){
     this.router.navigate(['/home']);
     localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userLastName');
+    localStorage.removeItem('email');
+    localStorage.removeItem('phoneNumber');
   }
 }

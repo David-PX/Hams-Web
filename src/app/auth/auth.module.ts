@@ -6,14 +6,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterNextStepComponent } from './pages/register-next-step/register-next-step.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterNextStepComponent
   ],
   imports: [
     CommonModule,

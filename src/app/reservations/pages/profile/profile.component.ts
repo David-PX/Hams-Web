@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
 import { NgxMaskModule } from 'ngx-mask';
+import { ReservationsService } from '../../services/reservations.service';
+import { Guest } from '../../interfaces/Guest';
 
 declare var Swal: any;
 
@@ -15,25 +17,53 @@ export class ProfileComponent {
   constructor(
     private fb: FormBuilder,
     private _validatorsService: ValidatorsService,
-    private router: Router
+    private router: Router,
+    private _reservationService: ReservationsService
   ) {}
 
   public editProfileForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    name: ['',Validators.required],
-    lastName: ['',Validators.required],
-    phoneNumber:['',Validators.required]
+    email: [localStorage.getItem('email'), [Validators.required, Validators.email]],
+    name: [localStorage.getItem('userName'),Validators.required],
+    lastName: [localStorage.getItem('userLastName'),Validators.required],
+    phoneNumber:[localStorage.getItem('phoneNumber'),Validators.required]
   });
 
   onSave(): void {
+    console.log("entrando")
     if (this.editProfileForm.invalid) {
       this.editProfileForm.markAllAsTouched();
       return;
     }
 
-    this.Edit(this.editProfileForm.get('email')?.value);
+    const guest: Guest = {
+      id: parseInt(localStorage.getItem('id')!),
+      names: this.editProfileForm.get('name')!.value,
+      lastNames: this.editProfileForm.get('lastName')!.value,
+      email: this.editProfileForm.get('email')!.value,
+      phoneNumber: this.editProfileForm.get('phoneNumber')!.value
+    };
 
-    this.editProfileForm.reset({ email: '' });
+    this._reservationService.Put(localStorage.getItem('id')!, guest).subscribe(
+      (response:any) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Se edito correctamente',
+        }).then(() => {
+          localStorage.setItem('userName', guest.names);
+          localStorage.setItem('userLastName', guest.lastNames);
+          localStorage.setItem('email', guest.email);
+          localStorage.setItem('phoneNumber', guest.phoneNumber);
+        });
+      },
+      error => {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Ha ocurrido un error',
+          text: error.error.Message
+        });
+      }
+    );
   }
 
   isValidField(field: string) {

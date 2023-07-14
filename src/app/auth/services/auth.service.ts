@@ -29,7 +29,6 @@ export class AuthService {
       email: email,
       password: password,
     };
-    console.log(body);
     return this.http.post(this.registerUrl, body);
   }
 }
