@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ValidatorsService } from 'src/app/shared/services/validators.service';
 import { AuthService } from '../../services/auth.service';
+import { Injectable } from '@angular/core';
 
 declare var Swal: any;
 
@@ -19,6 +20,11 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if(localStorage.getItem('token') != null){
+      this.router.navigate(['/customer-site/main'])
+    }
+    
+
     throw new Error('Method not implemented.');
   }
 
@@ -38,7 +44,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.get('password')?.value
     );
 
-    this.loginForm.reset({ email: '', password: 0 });
+    this.loginForm.reset({ email: '', password: '' });
   }
 
   isValidField(field: string) {
@@ -67,14 +73,14 @@ export class LoginComponent implements OnInit {
 
   Login(email: string, password: string): void {
     this.authService.login(email, password).subscribe(
-      (response:any) => {
+      (response: any) => {
         Swal.fire({
           icon: 'success',
           title: 'Inicio de sesión Exitoso',
           text: `Bienvenido`,
         }).then(() => {
           // localStorage.setItem('user', 'David');
-          localStorage.setItem('token', response.token)
+          localStorage.setItem('token', response.token);
           this.router.navigate(['/customer-site/main']);
         });
         console.log(response);
@@ -84,7 +90,7 @@ export class LoginComponent implements OnInit {
           icon: 'error',
           title: 'Inicio de sesión Fallido',
           text: `Intente de nuevo`,
-        })
+        });
         // Maneja los errores en caso de fallo en el inicio de sesión
         console.error(error);
       }
